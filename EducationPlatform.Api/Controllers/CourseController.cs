@@ -52,7 +52,7 @@ namespace EducationPlatform.Api.Controllers
         [HttpDelete]
         public async Task<ActionResult<BaseResponse<Course>>> Delete([FromQuery]long id)
         {
-            var result = courseService.Delete(id);
+            var result = await courseService.Delete(id);
 
             return StatusCode(result.Code ?? result.Error.Code.Value, result);
         }
