@@ -31,7 +31,7 @@ namespace EducationPlatform.Api
         {
 
             services.AddDbContext<EducationDbContext>(options
-                => options.UseNpgsql(Configuration.GetConnectionString("TestDb"))); 
+                => options.UseNpgsql(Configuration.GetConnectionString("EducationDb"))); 
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -51,7 +51,7 @@ namespace EducationPlatform.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsProduction())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
