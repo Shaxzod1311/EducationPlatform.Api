@@ -47,7 +47,7 @@ namespace EducationPlatform.Service.Services
             Teacher teacher = mapper.Map<Teacher>(teacherView);
 
             string imageName = await SaveFileAsync(teacherView.Image.OpenReadStream(), teacherView.Image.FileName);
-            teacher.ImageUrl = "https://localhost:44354/Images/Teachers/" + imageName;
+            teacher.ImageUrl = "https://course-platform-shax.herokuapp.com/Images/Teachers/" + imageName;
 
             response.Data = await unitOfWork.Teachers.CreateAsync(teacher);
             await unitOfWork.SaveChangesAsync();
@@ -111,7 +111,7 @@ namespace EducationPlatform.Service.Services
             Teacher teacher = mapper.Map<Teacher>(teacherView);
 
             string imageName = await SaveFileAsync(teacherView.Image.OpenReadStream(), teacherView.Image.FileName);
-            teacher.ImageUrl = "https://localhost:44354/Images/Teachers/" + imageName;
+            teacher.ImageUrl = "https://course-platform-shax.herokuapp.com/Images/Teachers/" + imageName;
             teacher.Id = id;
             
             response.Data = unitOfWork.Teachers.Update(teacher);

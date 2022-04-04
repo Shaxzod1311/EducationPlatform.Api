@@ -53,7 +53,7 @@ namespace EducationPlatform.Service.Services
 
             var result = await unitOfWork.Courses.CreateAsync(mappedCourse);
 
-            result.ImageUrl = "https://localhost:44354/Images/Courses/" + result.ImageUrl;
+            result.ImageUrl = "https://course-platform-shax.herokuapp.com/Images/Courses/" + result.ImageUrl;
 
             await unitOfWork.SaveChangesAsync();
 
@@ -112,7 +112,7 @@ namespace EducationPlatform.Service.Services
             mappedCourse.ImageUrl = await SaveFileAsync(courseView.Image.OpenReadStream(), courseView.Image.FileName);
             mappedCourse.Id = id;
 
-            mappedCourse.ImageUrl = "https://localhost:44354/Images/Courses/" + mappedCourse.ImageUrl;
+            mappedCourse.ImageUrl = "https://course-platform-shax.herokuapp.com/Images/Courses/" + mappedCourse.ImageUrl;
 
             response.Data = unitOfWork.Courses.Update(mappedCourse);
 
