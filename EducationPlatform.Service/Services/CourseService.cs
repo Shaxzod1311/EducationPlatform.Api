@@ -53,7 +53,7 @@ namespace EducationPlatform.Service.Services
 
             var result = await unitOfWork.Courses.CreateAsync(mappedCourse);
 
-            result.ImageUrl = "https://localhost:44354/Images/" + result.ImageUrl;
+            result.ImageUrl = "https://localhost:44354/Images/Courses/" + result.ImageUrl;
 
             await unitOfWork.SaveChangesAsync();
 
@@ -112,7 +112,7 @@ namespace EducationPlatform.Service.Services
             mappedCourse.ImageUrl = await SaveFileAsync(courseView.Image.OpenReadStream(), courseView.Image.FileName);
             mappedCourse.Id = id;
 
-            mappedCourse.ImageUrl = "https://localhost:44354/Images/" + mappedCourse.ImageUrl;
+            mappedCourse.ImageUrl = "https://localhost:44354/Images/Courses/" + mappedCourse.ImageUrl;
 
             response.Data = unitOfWork.Courses.Update(mappedCourse);
 
@@ -123,7 +123,7 @@ namespace EducationPlatform.Service.Services
         public async Task<string> SaveFileAsync(Stream file, string fileName)
         {
             fileName = Guid.NewGuid().ToString("N") + "_" + fileName;
-            string storagePath = config.GetSection("StoragePath:ImageUrl").Value;
+            string storagePath = config.GetSection("StoragePath:ImageUrls:ForCourse").Value;
             string filePath = Path.Combine(env.WebRootPath, $"{storagePath}/{fileName}");
 
             FileStream mainFile = File.Create(filePath);

@@ -56,5 +56,13 @@ namespace EducationPlatform.Api.Controllers
 
             return StatusCode(result.Code ?? result.Error.Code.Value, result);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<BaseResponse<Course>>> Get([FromQuery]long id)
+        {
+            var result = await courseService.GetAsync(course => course.Id == id);
+
+            return StatusCode(result.Code ?? result.Error.Code.Value, result);
+        }
     }
 }

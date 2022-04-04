@@ -14,7 +14,27 @@ namespace EducationPlatform.Api
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Logs\\log.txt";
+            Log.Logger = new LoggerConfiguration().WriteTo.File(
+                    path: path,
+                    outputTemplate: "{Timestamp: yyyy-MM-dd HH:mm:ss } " +
+                    "[{Level:u3}] {Message} {NewLine} {Exception}",
+                    rollingInterval: RollingInterval.Day,
+                    restrictedToMinimumLevel: Serilog.Events.LogEventLevel.Error
+                ).CreateLogger();
+            try
+            {
+                Log.Information("Program run");
+                CreateHostBuilder(args).Build().Run();
+            }
+            catch (Exception exception)
+            {
+                Log.Fatal(exception, "Something Error in Programm");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace EducationPlatform.Service.DTOs
 {
-    public class TeacherCreationVewModel
+    public class TeacherCreationViewModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Phone { get; set; }
         public IFormFile Image { get; set; }
     }
 }

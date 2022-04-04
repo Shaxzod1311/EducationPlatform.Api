@@ -12,7 +12,7 @@ namespace EducationPlatform.Domain.Configuration
         {
             TotalCount = totalCount;
             CurrentPage = @params.PageIndex;
-            TotalPages = (int)Math.Ceiling(totalCount / (double)@params.PageSize);
+            TotalPages = (int)Math.Ceiling(totalCount / (double)@params.PageSize) < 0 ? 0 : (int)Math.Ceiling(totalCount / (double)@params.PageSize);
         }
 
         public int TotalPages { get; set; }

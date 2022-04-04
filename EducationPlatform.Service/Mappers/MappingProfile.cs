@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EducationPlatform.Domain.Entities.Courses;
+using EducationPlatform.Domain.Entities.Teachers;
 using EducationPlatform.Service.DTOs;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace EducationPlatform.Service
         public MappingProfile()
         {
             CreateMap<CourseCreationViewModel, Course>().ReverseMap();
+            CreateMap<TeacherCreationViewModel, Teacher>().ReverseMap();
         }
     }
 }

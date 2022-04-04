@@ -14,6 +14,7 @@ using EducationPlatform.Service.Interfaces;
 using EducationPlatform.Service.Services;
 using EducationPlatform.Domain.Commons;
 using EducationPlatform.Domain.Entities.Courses;
+using EducationPlatform.Domain.Entities.Teachers;
 
 namespace EducationPlatform.Api
 {
@@ -40,11 +41,15 @@ namespace EducationPlatform.Api
             });
             
             services.AddHttpContextAccessor();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<ICourseService, CourseService>();
-            services.AddScoped<BaseResponse<Course>>();
+
             services.AddAutoMapper(typeof(MappingProfile));
-            
+
+            services.AddScoped<BaseResponse<Course>>();
+            services.AddScoped<BaseResponse<Teacher>>();
+            services.AddScoped<ITeacherService, TeacherService>();
     
         }
 
