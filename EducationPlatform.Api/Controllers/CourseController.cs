@@ -58,7 +58,7 @@ namespace EducationPlatform.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<BaseResponse<Course>>> Get([FromQuery]long id)
+        public async Task<ActionResult<BaseResponse<Course>>> Get(long id)
         {
             var result = await courseService.GetAsync(course => course.Id == id);
 
