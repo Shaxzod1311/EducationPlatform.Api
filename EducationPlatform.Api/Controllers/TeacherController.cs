@@ -10,7 +10,7 @@ namespace EducationPlatform.Api.Controllers
 {
 # pragma warning disable 
     [ApiController]
-    [Route("Api[controller]")]
+    [Route("Api/[controller]")]
     public class TeacherController : ControllerBase
     {
         private ITeacherService teacherService;
